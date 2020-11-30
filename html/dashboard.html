@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="javascript/script.js"></script>
+  <script src="/EmployeeManagementSystem/json/data.json"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a href="/EmployeeManagementSystem/html/registration.html" class="fas fa-user-plus" style="text-shadow: blue">Add
+    Employee</a>
+</head>
+
+<body>
+  <form>
+    <div class="container">
+      <!-- <button style='background-color:lightblue' class="btn"><i class="fas fa-user-plus"></i> Add Employee</button> -->
+      <table class="table" id="employeeList">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <script>
+            $(document).ready(function () {
+              $.getJSON("/EmployeeManagementSystem/json/data.json",
+                function (data) {
+                  let employee = '';
+                  $.each(data, function (key, value) {
+                    employee += '<tr>';
+                    employee += '<td>' +
+                      value.FirstName + '</td>';
+
+                    employee += '<td>' +
+                      value.LastName + '</td>';
+
+                    employee += '<td>' +
+                      value.Email + '</td>';
+
+                    employee += '</tr>';
+                  });
+                  $('#employeeList').append(employee);
+                });
+            }); 
+          </script>
+        </thead>
+      </table>
+    </div>
+  </form>
+</body>
+
+</html>
