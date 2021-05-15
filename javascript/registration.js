@@ -37,3 +37,15 @@ validateFirstName = () => {
       document.getElementById("passwordError").innerHTML = "invalid password";
     }
   }
+  validatePasswordConfirm  = () => {
+    let x = document.getElementById("cPassword").value;
+    let pattern = /^(?=.*[0-9])(?=.*[@#$%]{1})(?=.*[A-Z]).{8,}$/;
+    if (x.match(pattern)) {
+      document.getElementById("passwordError").innerHTML = " ";
+    }
+    else{
+      document.getElementById("passwordError").innerHTML = "invalid password";
+    }
+  }
+
+  
